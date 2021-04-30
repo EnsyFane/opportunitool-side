@@ -21,7 +21,10 @@ namespace Opportunitool.Infrastructure.Mapper
             return new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Opportunity, OpportunityReadDto>();
-                cfg.CreateMap<OpportunityCreateDto, Opportunity>();
+                cfg.CreateMap<OpportunityCreateDto, Opportunity>()
+                    .ForMember(dest => dest.Id, opt => opt.Ignore());
+                cfg.CreateMap<OpportunityUpdateDto, Opportunity>()
+                    .ForMember(dest => dest.Id, opt => opt.Ignore());
             });
         }
 
@@ -35,6 +38,11 @@ namespace Opportunitool.Infrastructure.Mapper
         public IEnumerable<TDest> Map<TSource, TDest>(IEnumerable<TSource> source)
         {
             return Mapper.Map<IEnumerable<TSource>, IEnumerable<TDest>>(source);
+        }
+
+        public TDest Map<TSource, TDest>(TSource source, TDest dest)
+        {
+            return Mapper.Map(source, dest);
         }
     }
 }

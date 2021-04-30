@@ -1,8 +1,6 @@
 ﻿using Opportunitool.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Opportunitool.Data
 {
@@ -43,6 +41,11 @@ namespace Opportunitool.Data
         }
 
         public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateOpportunity(Opportunity opportunity)
         {
             throw new NotImplementedException();
         }

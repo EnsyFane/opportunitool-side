@@ -51,5 +51,23 @@ namespace Opportunitool.Controllers
 
             return CreatedAtRoute(nameof(GetOpportunityById), new { opportunityReadDto.Id }, opportunityReadDto);
         }
+
+        [HttpPut("Opportunities/{id}")]
+        public ActionResult UpdateOpportunity(int id, OpportunityUpdateDto opportunityUpdateDto)
+        {
+            var opportunityFromRepo = _repository.GetOpportunityById(id);
+
+            if (opportunityFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(opportunityUpdateDto, opportunityFromRepo);
+
+            _repository.UpdateOpportunity(opportunityFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

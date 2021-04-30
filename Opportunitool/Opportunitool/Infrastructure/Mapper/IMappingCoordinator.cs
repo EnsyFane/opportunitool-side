@@ -7,5 +7,7 @@ namespace Opportunitool.Infrastructure.Mapper
         TDest Map<TSource, TDest>(TSource source);
 
         IEnumerable<TDest> Map<TSource, TDest>(IEnumerable<TSource> source);
+
+        TDest Map<TSource, TDest>(TSource source, TDest dest);
     }
 }

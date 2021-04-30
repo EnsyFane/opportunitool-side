@@ -12,5 +12,7 @@ namespace Opportunitool.Data
         Opportunity GetOpportunityById(int id);
 
         void CreateOpportunity(Opportunity opportunity);
+
+        void UpdateOpportunity(Opportunity opportunity);
     }
 }
