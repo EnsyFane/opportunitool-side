@@ -6,7 +6,7 @@ namespace Opportunitool.Unit.Tests.Mapper
     public class MappingCoordinatorTest
     {
         [Fact]
-        public void InitializeMappings_COnfigurationIsValid()
+        public void InitializeMappings_ConfigurationIsValid()
         {
             var mappingCoordinator = new TestMappingCoordinator();
             mappingCoordinator.AssertConfigurationIsValid();

@@ -21,6 +21,7 @@ namespace Opportunitool.Infrastructure.Mapper
             return new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Opportunity, OpportunityReadDto>();
+                cfg.CreateMap<OpportunityCreateDto, Opportunity>();
             });
         }
 

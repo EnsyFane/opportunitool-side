@@ -28,7 +28,7 @@ namespace Opportunitool.Controllers
             return Ok(_mapper.Map<Opportunity, OpportunityReadDto>(opportunities));
         }
 
-        [HttpGet("opportunities/{id}")]
+        [HttpGet("opportunities/{id}", Name = "GetOpportunityById")]
         public ActionResult<OpportunityReadDto> GetOpportunityById(int id)
         {
             var opportunity = _repository.GetOpportunityById(id);
@@ -38,6 +38,18 @@ namespace Opportunitool.Controllers
             }
 
             return NotFound();
+        }
+
+        [HttpPost("opportunities")]
+        public ActionResult<OpportunityReadDto> CreateOpportunity(OpportunityCreateDto opportunityCreateDto)
+        {
+            var opportunity = _mapper.Map<OpportunityCreateDto, Opportunity>(opportunityCreateDto);
+            _repository.CreateOpportunity(opportunity);
+            _repository.SaveChanges();
+
+            var opportunityReadDto = _mapper.Map<Opportunity, OpportunityReadDto>(opportunity);
+
+            return CreatedAtRoute(nameof(GetOpportunityById), new { opportunityReadDto.Id }, opportunityReadDto);
         }
     }
 }

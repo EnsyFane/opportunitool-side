@@ -1,4 +1,5 @@
 ﻿using Opportunitool.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,16 @@ namespace Opportunitool.Data
             _context = context;
         }
 
+        public void CreateOpportunity(Opportunity opportunity)
+        {
+            if (opportunity == null)
+            {
+                throw new ArgumentNullException(nameof(opportunity));
+            }
+
+            _context.Opportunities.Add(opportunity);
+        }
+
         public IEnumerable<Opportunity> GetAllOpportunities()
         {
             return _context.Opportunities.ToList();
@@ -21,6 +32,11 @@ namespace Opportunitool.Data
         public Opportunity GetOpportunityById(int id)
         {
             return _context.Opportunities.FirstOrDefault(p => p.Id == id);
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }
