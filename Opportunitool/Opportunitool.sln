@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opportunitool", "Opportunitool\Opportunitool.csproj", "{24C50D9B-760C-44C8-9361-8F3563F7D5EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opportunitool", "Opportunitool\Opportunitool.csproj", "{24C50D9B-760C-44C8-9361-8F3563F7D5EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5FB50D79-66DE-44AE-B4AF-3F1129C31C68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opportunitool.Unit.Tests", "Tests\Opportunitool.Unit.Tests\Opportunitool.Unit.Tests.csproj", "{71ED2EC8-2506-4F65-B899-A0006152E472}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{24C50D9B-760C-44C8-9361-8F3563F7D5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24C50D9B-760C-44C8-9361-8F3563F7D5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24C50D9B-760C-44C8-9361-8F3563F7D5EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71ED2EC8-2506-4F65-B899-A0006152E472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71ED2EC8-2506-4F65-B899-A0006152E472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71ED2EC8-2506-4F65-B899-A0006152E472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71ED2EC8-2506-4F65-B899-A0006152E472}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71ED2EC8-2506-4F65-B899-A0006152E472} = {5FB50D79-66DE-44AE-B4AF-3F1129C31C68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30E50820-BF3A-45B7-8EF0-8B9E62F59805}
