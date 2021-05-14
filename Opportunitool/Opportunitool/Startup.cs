@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using Opportunitool.Data;
 using Opportunitool.Infrastructure.Mapper;
-using System;
 
 namespace Opportunitool
 {
@@ -22,10 +22,16 @@ namespace Opportunitool
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             _dbPassword = Configuration["DB:Pass"];
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opt =>
+                {
+                    opt.Audience = Configuration["AAD:ResourceId"];
+                    opt.Authority = $"{Configuration["AAD:InstanceId"]}{Configuration["AAD:TenantId"]}";
+                });
 
             services.AddDbContext<OpportunitoolContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("OpportunitoolConnection") + _dbPassword + ";"));
@@ -41,7 +47,6 @@ namespace Opportunitool
             services.AddScoped<IOpportunityRepo, SqlOpportunityRepo>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -51,7 +56,7 @@ namespace Opportunitool
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

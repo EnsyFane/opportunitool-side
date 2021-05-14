@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Opportunitool.Data;
@@ -22,6 +22,7 @@ namespace Opportunitool.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet("opportunities")]
         public ActionResult<IEnumerable<OpportunityReadDto>> GetAllOpportunities()
         {
@@ -29,6 +30,7 @@ namespace Opportunitool.Controllers
             return Ok(_mapper.Map<Opportunity, OpportunityReadDto>(opportunities));
         }
 
+        [Authorize]
         [HttpGet("opportunities/{id}", Name = "GetOpportunityById")]
         public ActionResult<OpportunityReadDto> GetOpportunityById(int id)
         {
@@ -41,6 +43,7 @@ namespace Opportunitool.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpPost("opportunities")]
         public ActionResult<OpportunityReadDto> CreateOpportunity(OpportunityCreateDto opportunityCreateDto)
         {
@@ -53,6 +56,7 @@ namespace Opportunitool.Controllers
             return CreatedAtRoute(nameof(GetOpportunityById), new { opportunityReadDto.Id }, opportunityReadDto);
         }
 
+        [Authorize]
         [HttpPut("opportunities/{id}")]
         public ActionResult UpdateOpportunity(int id, OpportunityUpdateDto opportunityUpdateDto)
         {
@@ -71,6 +75,7 @@ namespace Opportunitool.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpPatch("opportunities/{id}")]
         public ActionResult PatchOpportunity(int id, JsonPatchDocument<OpportunityUpdateDto> patchDocument)
         {
@@ -96,6 +101,7 @@ namespace Opportunitool.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("opportunities/{id}")]
         public ActionResult DeleteOpportunity(int id)
         {
