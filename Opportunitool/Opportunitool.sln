@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opportunitool", "Opportunit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5FB50D79-66DE-44AE-B4AF-3F1129C31C68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opportunitool.Unit.Tests", "Tests\Opportunitool.Unit.Tests\Opportunitool.Unit.Tests.csproj", "{71ED2EC8-2506-4F65-B899-A0006152E472}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opportunitool.Unit.Tests", "Tests\Opportunitool.Unit.Tests\Opportunitool.Unit.Tests.csproj", "{71ED2EC8-2506-4F65-B899-A0006152E472}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpportunitoolClient", "OpportunitoolClient\OpportunitoolClient.csproj", "{4A6BE289-6FE2-4334-9B4C-DA6541DB7EB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{71ED2EC8-2506-4F65-B899-A0006152E472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71ED2EC8-2506-4F65-B899-A0006152E472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71ED2EC8-2506-4F65-B899-A0006152E472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6BE289-6FE2-4334-9B4C-DA6541DB7EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6BE289-6FE2-4334-9B4C-DA6541DB7EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6BE289-6FE2-4334-9B4C-DA6541DB7EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6BE289-6FE2-4334-9B4C-DA6541DB7EB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
