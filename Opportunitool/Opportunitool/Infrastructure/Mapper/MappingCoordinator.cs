@@ -25,6 +25,7 @@ namespace Opportunitool.Infrastructure.Mapper
                     .ForMember(dest => dest.Id, opt => opt.Ignore());
                 cfg.CreateMap<OpportunityUpdateDto, Opportunity>()
                     .ForMember(dest => dest.Id, opt => opt.Ignore());
+                cfg.CreateMap<Opportunity, OpportunityUpdateDto>();
             });
         }
 

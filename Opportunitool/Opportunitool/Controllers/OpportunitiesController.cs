@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Opportunitool.Data;
 using Opportunitool.Dtos;
@@ -52,7 +53,7 @@ namespace Opportunitool.Controllers
             return CreatedAtRoute(nameof(GetOpportunityById), new { opportunityReadDto.Id }, opportunityReadDto);
         }
 
-        [HttpPut("Opportunities/{id}")]
+        [HttpPut("opportunities/{id}")]
         public ActionResult UpdateOpportunity(int id, OpportunityUpdateDto opportunityUpdateDto)
         {
             var opportunityFromRepo = _repository.GetOpportunityById(id);
@@ -65,6 +66,47 @@ namespace Opportunitool.Controllers
             _mapper.Map(opportunityUpdateDto, opportunityFromRepo);
 
             _repository.UpdateOpportunity(opportunityFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpPatch("opportunities/{id}")]
+        public ActionResult PatchOpportunity(int id, JsonPatchDocument<OpportunityUpdateDto> patchDocument)
+        {
+            var opportunityFromRepo = _repository.GetOpportunityById(id);
+
+            if (opportunityFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var opportunityToPatch = _mapper.Map<Opportunity, OpportunityUpdateDto>(opportunityFromRepo);
+            patchDocument.ApplyTo(opportunityToPatch, ModelState);
+            if (!TryValidateModel(opportunityToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(opportunityToPatch, opportunityFromRepo);
+
+            _repository.UpdateOpportunity(opportunityFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpDelete("opportunities/{id}")]
+        public ActionResult DeleteOpportunity(int id)
+        {
+            var opportunityFromRepo = _repository.GetOpportunityById(id);
+
+            if (opportunityFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteOpportunity(opportunityFromRepo);
             _repository.SaveChanges();
 
             return NoContent();

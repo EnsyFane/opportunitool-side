@@ -24,6 +24,16 @@ namespace Opportunitool.Data
             _context.Opportunities.Add(opportunity);
         }
 
+        public void DeleteOpportunity(Opportunity opportunity)
+        {
+            if (opportunity == null)
+            {
+                throw new ArgumentNullException(nameof(opportunity));
+            }
+
+            _context.Opportunities.Remove(opportunity);
+        }
+
         public IEnumerable<Opportunity> GetAllOpportunities()
         {
             return _context.Opportunities.ToList();

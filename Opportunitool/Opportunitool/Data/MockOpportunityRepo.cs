@@ -11,6 +11,11 @@ namespace Opportunitool.Data
             throw new NotImplementedException();
         }
 
+        public void DeleteOpportunity(Opportunity opportunity)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Opportunity> GetAllOpportunities()
         {
             return new List<Opportunity>()

@@ -5,8 +5,6 @@ namespace Opportunitool.Data
 {
     public interface IOpportunityRepo
     {
-        bool SaveChanges();
-
         IEnumerable<Opportunity> GetAllOpportunities();
 
         Opportunity GetOpportunityById(int id);
@@ -14,5 +12,9 @@ namespace Opportunitool.Data
         void CreateOpportunity(Opportunity opportunity);
 
         void UpdateOpportunity(Opportunity opportunity);
+
+        void DeleteOpportunity(Opportunity opportunity);
+
+        bool SaveChanges();
     }
 }

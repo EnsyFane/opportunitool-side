@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using Opportunitool.Data;
 using Opportunitool.Infrastructure.Mapper;
 using System;
@@ -29,7 +30,11 @@ namespace Opportunitool
             services.AddDbContext<OpportunitoolContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("OpportunitoolConnection") + _dbPassword + ";"));
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(opt =>
+                {
+                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                });
 
             services.AddSingleton<IMappingCoordinator, MappingCoordinator>();
 
