@@ -35,10 +35,10 @@ namespace OpportunitoolClient
                 .Build();
 
             var cfg = configuration.Get<AuthConfig>();
-            cfg.ClientId = configuration.GetValue<string>("ADD:ClientId");
-            cfg.ClientSecret = configuration.GetValue<string>("ADD:ClientSecret");
-            cfg.ResourceId = configuration.GetValue<string>("ADD:ResourceId");
-            cfg.TenantId = configuration.GetValue<string>("ADD:TenantId");
+            cfg.ClientId = configuration.GetValue<string>("AAD:ClientId");
+            cfg.ClientSecret = configuration.GetValue<string>("AAD:ClientSecret");
+            cfg.ResourceId = configuration.GetValue<string>("AAD:ResourceId");
+            cfg.TenantId = configuration.GetValue<string>("AAD:TenantId");
             return cfg;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Opportunitool.Data;
 using Opportunitool.Dtos;
 using Opportunitool.Infrastructure.Mapper;
@@ -15,14 +16,15 @@ namespace Opportunitool.Controllers
     {
         private readonly IOpportunityRepo _repository;
         private readonly IMappingCoordinator _mapper;
+        private readonly ILogger _logger;
 
-        public OpportunitiesController(IOpportunityRepo repository, IMappingCoordinator mapper)
+        public OpportunitiesController(IOpportunityRepo repository, IMappingCoordinator mapper, ILogger<OpportunitiesController> logger)
         {
             _repository = repository;
             _mapper = mapper;
+            _logger = logger;
         }
 
-        [Authorize]
         [HttpGet("opportunities")]
         public ActionResult<IEnumerable<OpportunityReadDto>> GetAllOpportunities()
         {
