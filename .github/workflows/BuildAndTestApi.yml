@@ -6,13 +6,11 @@ on:
     paths: 
     - 'Opportunitool/Opportunitool/**'
     - 'Opportunitool/Tests/**'
-    - '.github/**'
   pull_request:
     branches: [ main ]
     paths: 
     - 'Opportunitool/Opportunitool/**'
     - 'Opportunitool/Tests/**'
-    - '.github/**'
   schedule:
     - cron: '0 0 * * *'
 
@@ -37,7 +35,7 @@ jobs:
         run: mkdir _build
 
       - name: Restore NuGet Packages
-        run: nuget restore C#\Basketball\Basketball.sln
+        run: nuget restore Opportunitool\Opportunitool.sln
         
       - name: Build Solution
         run: |
