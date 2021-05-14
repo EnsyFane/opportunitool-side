@@ -29,8 +29,8 @@ namespace Opportunitool
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
                 {
-                    opt.Audience = Configuration["AAD:ResourceId"];
-                    opt.Authority = $"{Configuration["AAD:InstanceId"]}{Configuration["AAD:TenantId"]}";
+                    opt.Audience = Configuration["ADD:ResourceId"];
+                    opt.Authority = $"{Configuration["AAD:InstanceId"]}{Configuration["ADD:TenantId"]}";
                 });
 
             services.AddDbContext<OpportunitoolContext>(opt => opt.UseSqlServer(
