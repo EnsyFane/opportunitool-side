@@ -1,0 +1,48 @@
+name: .NET Core Build and Test Opportunitool HTTP REST API
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+    - 'Opportunitool/Opportunitool/**'
+    - 'Opportunitool/Tests/**'
+    - '.github/**'
+  pull_request:
+    branches: [ main ]
+    paths: 
+    - 'Opportunitool/Opportunitool/**'
+    - 'Opportunitool/Tests/**'
+    - '.github/**'
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
+
+      - name: Create Build Directory
+        run: mkdir _build
+
+      - name: Restore NuGet Packages
+        run: nuget restore C#\Basketball\Basketball.sln
+        
+      - name: Build Solution
+        run: |
+          msbuild.exe Opportunitool\Opportunitool.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+      
+      - name: Test Solution      
+        run: dotnet test Opportunitool\Tests\Opportunitool.Unit.Tests\Opportunitool.Unit.Tests.csproj --verbosity normal --no-build --configuration Release
+      
