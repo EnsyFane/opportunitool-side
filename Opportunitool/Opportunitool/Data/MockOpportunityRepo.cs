@@ -1,13 +1,21 @@
 ﻿using Opportunitool.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Opportunitool.Data
 {
     public class MockOpportunityRepo : IOpportunityRepo
     {
+        public void CreateOpportunity(Opportunity opportunity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteOpportunity(Opportunity opportunity)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Opportunity> GetAllOpportunities()
         {
             return new List<Opportunity>()
@@ -35,6 +43,16 @@ namespace Opportunitool.Data
                 Name = "My name",
                 Organizer = "Me"
             };
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateOpportunity(Opportunity opportunity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

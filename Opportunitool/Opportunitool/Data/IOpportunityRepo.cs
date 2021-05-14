@@ -8,5 +8,13 @@ namespace Opportunitool.Data
         IEnumerable<Opportunity> GetAllOpportunities();
 
         Opportunity GetOpportunityById(int id);
+
+        void CreateOpportunity(Opportunity opportunity);
+
+        void UpdateOpportunity(Opportunity opportunity);
+
+        void DeleteOpportunity(Opportunity opportunity);
+
+        bool SaveChanges();
     }
 }
