@@ -1,0 +1,54 @@
+@use '~@angular/material'as mat;
+@import "colors.scss";
+
+@include mat.core();
+
+$theme-primary: mat.define-palette($orange-p);
+$theme-accent: mat.define-palette($blue-p);
+$theme-warn: mat.define-palette($red-p);
+
+$app-light-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $theme-primary,
+            accent: $theme-accent,
+            warn: $theme-warn,
+        ),
+    )
+);
+
+$app-dark-theme: mat.define-dark-theme(
+    (
+        color: (
+            primary: $theme-primary,
+            accent: $theme-accent,
+            warn: $theme-warn,
+        ),
+    )
+);
+
+$app-font: "Roboto", sans-serif;
+
+@include mat.all-component-themes($app-light-theme);
+
+.dark-mode {
+    @include mat.all-component-colors($app-dark-theme);
+}
+
+.snackbar {
+    padding: 0 !important;
+}
+
+.mat-button {
+    .mat-button-focus-overlay {
+        background-color: transparent;
+    }
+}
+
+.mat-stroked-button:not([disabled]) {
+    border-color: rgba(mat.get-color-from-palette($theme-primary, 500), 0.5) !important;
+
+    .mat-button-focus-overlay {
+        background-color: transparent;
+    }
+}
