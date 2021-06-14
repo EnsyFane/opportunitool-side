@@ -1,0 +1,51 @@
+name: Angular Lint, Build and Test OpportuniTool web app
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+    - 'opportunitool-ui'
+    - '.github/workflows/buildAndTestAngular.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+    - 'opportunitool-ui'
+    - '.github/workflows/buildAndTestAngular.yml'
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        
+      - name: Run npm install
+        run: |
+          cd opportunitool-ui
+          npm install
+        
+      - name: Lint
+        run: |
+          cd opportunitool-ui
+          npm run lint
+
+      - name: Build
+        run: |
+          cd opportunitool-ui
+          npm run build
+
+      - name: Test
+        run: |
+          cd opportunitool-ui 
+          npm run test-headless
+          
+      - name: Build-prod
+        run: |
+          cd opportunitool-ui 
+          npm run build-prod
