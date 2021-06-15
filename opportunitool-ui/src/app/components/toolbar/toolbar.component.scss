@@ -1,0 +1,21 @@
+.container {
+    height: 10%;
+}
+
+.menu-button {
+    color: white;
+    font-size: 2em;
+}
+
+.logo {
+    filter: invert(0%) sepia(0%) saturate(17%) hue-rotate(302deg) brightness(105%) contrast(103%);
+    width: 5em;
+}
+
+.search-form {
+    margin-left: 40px;
+
+    .mat-form-field {
+        min-width: 250px;
+    }
+}

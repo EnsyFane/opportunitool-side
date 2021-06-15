@@ -1,0 +1,15 @@
+<mat-toolbar class="container" color="primary">
+    <!-- <button mat-icon-button>
+        <mat-icon class="menu-button" fontSet="fa" fontIcon="fa-bars"></mat-icon>
+    </button> -->
+    <button mat-icon-button [disableRipple]="true">
+        <img class="logo" src="./assets/opportunitool-logo-black.png" alt="opportunitool logo">
+    </button>
+
+    <form #form="ngForm" [formGroup]="searchFormGroup" class="search-form">
+        <mat-form-field>
+            <mat-label i18n>Search for an opportunity</mat-label>
+            <input type="text" formControlName="search" matInput i18n-placeholder placeholder="programming, sports ...">
+        </mat-form-field>
+    </form>
+</mat-toolbar>

@@ -1,7 +1,13 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" target-language="en-US" datatype="plaintext">
       <body>
-      <trans-unit id="1519617939691144226" datatype="html">
+      <trans-unit id="7813627049289333907" datatype="html">
+        <source>Search for an opportunity</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="4626580537905108982" datatype="html">
+        <source>programming, sports ...</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="1519617939691144226" datatype="html">
         <source>OpportuniTool</source>
         <target state="final">OpportuniTool</target>
       </trans-unit></body>
