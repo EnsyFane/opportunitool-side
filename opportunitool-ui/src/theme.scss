@@ -52,3 +52,7 @@ $app-font: "Roboto", sans-serif;
         background-color: transparent;
     }
 }
+
+@function mat-color($palette, $value) {
+    @return mat.get-color-from-palette($palette, $value);
+}

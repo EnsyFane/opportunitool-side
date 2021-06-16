@@ -8,10 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { OppToolbarModule } from './components/toolbar/toolbar.module';
+import { HomeViewComponent } from './components/home-view/home-view.component';
+import { OpportunitiesViewComponent } from './components/opportunities-view/opportunities-view.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HomeViewComponent,
+        OpportunitiesViewComponent
     ],
     imports: [
         A11yModule,
