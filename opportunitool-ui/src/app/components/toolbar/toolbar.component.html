@@ -16,8 +16,13 @@
         <a [routerLink]="'/home'" routerLinkActive="active" i18n>Home</a>
         <a [routerLink]="'/opportunities'" routerLinkActive="active" i18n>Opportunities</a>
         <a [routerLink]="'/about'" routerLinkActive="active" [matMenuTriggerFor]="menu" i18n>About us</a>
-        <a [routerLink]="'/login'" routerLinkActive="active" i18n>Login</a>
-        <a [routerLink]="'/register'" routerLinkActive="active" i18n>Register</a>
+        <ng-container *ngIf="!isLoggedIn">
+            <a [routerLink]="'/login'" routerLinkActive="active" i18n>Login</a>
+            <a [routerLink]="'/register'" routerLinkActive="active" i18n>Register</a>
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn">
+            <a [routerLink]="'/account'" routerLinkActive="active" i18n>Account</a>
+        </ng-container>
         <button mat-raised-button i18n>Add opportunity</button>
 
         <mat-menu #menu="matMenu">

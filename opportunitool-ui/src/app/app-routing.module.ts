@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'about/privacy', component: OpportunitiesViewComponent },
     { path: 'login', component: OpportunitiesViewComponent },
     { path: 'register', component: OpportunitiesViewComponent },
-    { path: 'my-account', component: OpportunitiesViewComponent }
+    { path: 'account', component: OpportunitiesViewComponent }
 ];
 
 @NgModule({

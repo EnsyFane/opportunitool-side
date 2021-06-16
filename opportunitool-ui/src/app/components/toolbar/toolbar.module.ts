@@ -7,11 +7,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [ToolbarComponent],
     imports: [
         AppRoutingModule,
+        CommonModule,
         FormsModule,
         MatButtonModule,
         MatIconModule,
