@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'opp-opportunities-view',
-  templateUrl: './opportunities-view.component.html',
-  styleUrls: ['./opportunities-view.component.scss']
+    selector: 'opp-opportunities-view',
+    templateUrl: './opportunities-view.component.html',
+    styleUrls: ['./opportunities-view.component.scss']
 })
-export class OpportunitiesViewComponent implements OnInit {
+export class OpportunitiesViewComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    constructor() {
+        // TODO: later
+    }
 }
