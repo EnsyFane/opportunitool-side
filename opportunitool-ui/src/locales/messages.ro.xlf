@@ -9,22 +9,37 @@
         <target state="final">programare, sporturi ...</target>
       </trans-unit><trans-unit id="2821179408673282599" datatype="html">
         <source>Home</source>
-        <target state="new"/>
+        <target state="final">Acasă</target>
       </trans-unit><trans-unit id="368381012328092097" datatype="html">
         <source>Opportunities</source>
-        <target state="new"/>
+        <target state="final">Oportunități</target>
       </trans-unit><trans-unit id="2501489806101473286" datatype="html">
         <source>About us</source>
-        <target state="new"/>
+        <target state="final">Despre noi</target>
       </trans-unit><trans-unit id="2454050363478003966" datatype="html">
         <source>Login</source>
-        <target state="new"/>
+        <target state="final">Autentificare</target>
       </trans-unit><trans-unit id="3301086086650990787" datatype="html">
         <source>Register</source>
-        <target state="new"/>
+        <target state="final">Înregistrare</target>
+      </trans-unit><trans-unit id="4086606389696938932" datatype="html">
+        <source>Account</source>
+        <target state="final">Cont</target>
       </trans-unit><trans-unit id="5867460751150424354" datatype="html">
         <source>Add opportunity</source>
-        <target state="new"/>
+        <target state="final">Adaugă oportunitate</target>
+      </trans-unit><trans-unit id="2337476471152818866" datatype="html">
+        <source>Ambasadors</source>
+        <target state="final">Ambasadori</target>
+      </trans-unit><trans-unit id="7469753398818290612" datatype="html">
+        <source>Our Story</source>
+        <target state="final">Povestea noastră</target>
+      </trans-unit><trans-unit id="9186904870178836169" datatype="html">
+        <source>Volunteering Month</source>
+        <target state="final">Luna voluntariatului</target>
+      </trans-unit><trans-unit id="8439955599488894226" datatype="html">
+        <source>Privacy Policy</source>
+        <target state="final">Politică de confidențialitate</target>
       </trans-unit><trans-unit id="1519617939691144226" datatype="html">
         <source>OpportuniTool</source>
         <target state="final">OpportuniTool</target>

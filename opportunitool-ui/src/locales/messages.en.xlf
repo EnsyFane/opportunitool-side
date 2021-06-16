@@ -21,6 +21,26 @@
         <source>About us</source>
         <target>About us</target>
       </trans-unit>
+      <trans-unit id="5867460751150424354" datatype="html">
+        <source>Add opportunity</source>
+        <target>Add opportunity</target>
+      </trans-unit>
+      <trans-unit id="2337476471152818866" datatype="html">
+        <source>Ambasadors</source>
+        <target>Ambasadors</target>
+      </trans-unit>
+      <trans-unit id="7469753398818290612" datatype="html">
+        <source>Our Story</source>
+        <target>Our Story</target>
+      </trans-unit>
+      <trans-unit id="9186904870178836169" datatype="html">
+        <source>Volunteering Month</source>
+        <target>Volunteering Month</target>
+      </trans-unit>
+      <trans-unit id="8439955599488894226" datatype="html">
+        <source>Privacy Policy</source>
+        <target>Privacy Policy</target>
+      </trans-unit>
       <trans-unit id="2454050363478003966" datatype="html">
         <source>Login</source>
         <target>Login</target>
@@ -29,9 +49,9 @@
         <source>Register</source>
         <target>Register</target>
       </trans-unit>
-      <trans-unit id="5867460751150424354" datatype="html">
-        <source>Add opportunity</source>
-        <target>Add opportunity</target>
+      <trans-unit id="4086606389696938932" datatype="html">
+        <source>Account</source>
+        <target>Account</target>
       </trans-unit>
       <trans-unit id="1519617939691144226" datatype="html">
         <source>OpportuniTool</source>
