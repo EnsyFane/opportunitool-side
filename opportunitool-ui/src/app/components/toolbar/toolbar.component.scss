@@ -1,5 +1,5 @@
 .container {
-    height: 10%;
+    height: 4em;
 }
 
 .menu-button {
@@ -8,14 +8,20 @@
 }
 
 .logo {
-    filter: invert(0%) sepia(0%) saturate(17%) hue-rotate(302deg) brightness(105%) contrast(103%);
     width: 5em;
 }
 
 .search-form {
-    margin-left: 40px;
+    margin-left: 3em;
+    font-size: 16px;
 
     .mat-form-field {
-        min-width: 250px;
+        min-width: 23ch;
     }
+}
+
+.search-icon {
+    display: inline-flex;
+    vertical-align: bottom;
+    margin-bottom: -0.15em;
 }

@@ -8,6 +8,7 @@
 
     <form #form="ngForm" [formGroup]="searchFormGroup" class="search-form">
         <mat-form-field>
+            <mat-icon class="search-icon" matPrefix>search</mat-icon>
             <mat-label i18n>Search for an opportunity</mat-label>
             <input type="text" formControlName="search" matInput i18n-placeholder placeholder="programming, sports ...">
         </mat-form-field>
