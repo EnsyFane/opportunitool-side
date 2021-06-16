@@ -1,0 +1,22 @@
+<mat-toolbar class="container" color="primary">
+    <button mat-icon-button [disableRipple]="true" (click)="navigateHome()">
+        <img class="logo" src="./assets/opportunitool-logo-black.png" alt="opportunitool logo">
+    </button>
+
+    <form #form="ngForm" [formGroup]="searchFormGroup" class="search-form">
+        <mat-form-field>
+            <mat-icon class="search-icon" matPrefix>search</mat-icon>
+            <mat-label i18n>Search for an opportunity</mat-label>
+            <input type="text" formControlName="search" matInput i18n-placeholder placeholder="programming, sports ...">
+        </mat-form-field>
+    </form>
+
+    <nav class="button-container">
+        <a [routerLink]="'/home'" routerLinkActive="active" i18n>Home</a>
+        <a [routerLink]="'/opportunities'" routerLinkActive="active" i18n>Opportunities</a>
+        <a [routerLink]="'/about'" routerLinkActive="active" i18n>About us</a>
+        <a [routerLink]="'/login'" routerLinkActive="active" i18n>Login</a>
+        <a [routerLink]="'/register'" routerLinkActive="active" i18n>Register</a>
+        <button mat-raised-button i18n>Add opportunity</button>
+    </nav>
+</mat-toolbar>

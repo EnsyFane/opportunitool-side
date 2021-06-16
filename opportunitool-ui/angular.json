@@ -1,159 +1,164 @@
 {
-	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-	"version": 1,
-	"newProjectRoot": "projects",
-	"projects": {
-		"opportunitool-ui": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				}
-			},
-			"root": "",
-			"sourceRoot": "src",
-			"prefix": "opp",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
-					"options": {
-						"outputPath": "dist/opportunitool-ui",
-						"index": "src/index.html",
-						"main": "src/main.ts",
-						"polyfills": "src/polyfills.ts",
-						"tsConfig": "tsconfig.app.json",
-						"aot": true,
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"src/favicon.ico",
-							"src/assets"
-						],
-						"styles": [
-							"node_modules/material-design-icons/iconfont/material-icons.css",
-							"src/theme.scss",
-							"src/styles.scss"
-						],
-						"scripts": [],
-						"preserveSymlinks": true
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "5mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "50kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "none",
-							"optimization": true,
-							"sourceMap": false,
-							"extractCss": true,
-							"namedChunks": false,
-							"extractLicenses": true,
-							"vendorChunk": false,
-							"buildOptimizer": true
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						},
-						"en": {
-							"localize": [
-								"en",
-								"en-US"
-							]
-						},
-						"ro": {
-							"localize": [
-								"ro"
-							]
-						}
-					}
-				},
-				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
-					"options": {
-						"browserTarget": "opportunitool-ui:build",
-						"proxyConfig": "./proxy.conf.json"
-					},
-					"configurations": {
-						"production": {
-							"browserTarget": "opportunitool-ui:build:production"
-						},
-						"en": {
-							"browserTarget": "opportunitool-ui:build:en"
-						},
-						"ro": {
-							"browserTarget": "opportunitool-ui:build:ro"
-						}
-					}
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "opportunitool-ui:build"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "src/test.ts",
-						"polyfills": "src/polyfills.ts",
-						"tsConfig": "tsconfig.spec.json",
-						"karmaConfig": "karma.conf.js",
-						"assets": [
-							"src/favicon.ico",
-							"src/assets"
-						],
-						"styles": [
-							"src/styles.scss"
-						],
-						"scripts": []
-					}
-				},
-				"lint": {
-					"builder": "@angular-devkit/build-angular:tslint",
-					"options": {
-						"tsConfig": [
-							"tsconfig.app.json",
-							"tsconfig.spec.json"
-						],
-						"exclude": [
-							"**/node_modules/**"
-						]
-					}
-				}
-			},
-			"i18n": {
-				"locales": {
-					"en": {
-						"translation": "src/locales/messages.en.xlf",
-						"baseHref": "en"
-					},
-					"ro": {
-						"translation": "src/locales/messages.ro.xlf",
-						"baseHref": "ro"
-					}
-				}
-			}
-		}
-	},
-	"defaultProject": "opportunitool-ui",
-	"cli": {
-		"analytics": false
-	}
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "opportunitool-ui": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "opp",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/opportunitool-ui",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "src/theme.scss",
+                            "src/styles.scss"
+                        ],
+                        "scripts": [],
+                        "preserveSymlinks": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "50kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "none",
+                            "optimization": true,
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        },
+                        "en": {
+                            "localize": [
+                                "en",
+                                "en-US"
+                            ]
+                        },
+                        "ro": {
+                            "localize": [
+                                "ro"
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "opportunitool-ui:build",
+                        "proxyConfig": "./proxy.conf.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "opportunitool-ui:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "opportunitool-ui:build:development"
+                        },
+                        "en": {
+                            "browserTarget": "opportunitool-ui:build:en"
+                        },
+                        "ro": {
+                            "browserTarget": "opportunitool-ui:build:ro"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "opportunitool-ui:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ],
+                        "styles": [
+                            "src/styles.scss"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            },
+            "i18n": {
+                "locales": {
+                    "en": {
+                        "translation": "src/locales/messages.en.xlf",
+                        "baseHref": "en"
+                    },
+                    "ro": {
+                        "translation": "src/locales/messages.ro.xlf",
+                        "baseHref": "ro"
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "opportunitool-ui",
+    "cli": {
+        "analytics": false
+    }
 }

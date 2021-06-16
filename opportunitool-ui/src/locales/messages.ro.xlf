@@ -1,7 +1,31 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ro" datatype="plaintext">
         <body>
-        <trans-unit id="1519617939691144226" datatype="html">
+        <trans-unit id="7813627049289333907" datatype="html">
+        <source>Search for an opportunity</source>
+        <target state="final">Caută o oportunitate</target>
+      </trans-unit><trans-unit id="4626580537905108982" datatype="html">
+        <source>programming, sports ...</source>
+        <target state="final">programare, sporturi ...</target>
+      </trans-unit><trans-unit id="2821179408673282599" datatype="html">
+        <source>Home</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="368381012328092097" datatype="html">
+        <source>Opportunities</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="2501489806101473286" datatype="html">
+        <source>About us</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="2454050363478003966" datatype="html">
+        <source>Login</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="3301086086650990787" datatype="html">
+        <source>Register</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="5867460751150424354" datatype="html">
+        <source>Add opportunity</source>
+        <target state="new"/>
+      </trans-unit><trans-unit id="1519617939691144226" datatype="html">
         <source>OpportuniTool</source>
         <target state="final">OpportuniTool</target>
       </trans-unit></body>
