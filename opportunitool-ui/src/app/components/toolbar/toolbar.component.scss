@@ -1,5 +1,9 @@
 @import "../../../styles.scss";
 
+:host {
+    display: block;
+}
+
 .container {
     height: 4em;
 }
