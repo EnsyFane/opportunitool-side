@@ -3,6 +3,7 @@ import { ToolbarComponent } from './toolbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
@@ -15,6 +16,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
         MatButtonModule,
         MatIconModule,
         MatInputModule,
+        MatMenuModule,
         MatToolbarModule,
         ReactiveFormsModule
     ],
