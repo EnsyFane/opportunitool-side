@@ -10,6 +10,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { OppToolbarModule } from './components/toolbar/toolbar.module';
 import { HomeViewComponent } from './components/home-view/home-view.component';
 import { OpportunitiesViewComponent } from './components/opportunities-view/opportunities-view.component';
+import { OppScrollUpModule } from './components/scroll-up/scroll-up.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { OpportunitiesViewComponent } from './components/opportunities-view/oppo
         CommonModule,
         NgxSpinnerModule,
 
-        OppToolbarModule
+        OppToolbarModule,
+        OppScrollUpModule
     ],
     exports: [],
     providers: [

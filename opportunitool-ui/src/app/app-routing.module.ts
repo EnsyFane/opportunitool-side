@@ -7,6 +7,13 @@ const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeViewComponent },
     { path: 'opportunities', component: OpportunitiesViewComponent },
+    { path: 'about/ambasadors', component: OpportunitiesViewComponent },
+    { path: 'about/story', component: OpportunitiesViewComponent },
+    { path: 'about/volunteering', component: OpportunitiesViewComponent },
+    { path: 'about/privacy', component: OpportunitiesViewComponent },
+    { path: 'login', component: OpportunitiesViewComponent },
+    { path: 'register', component: OpportunitiesViewComponent },
+    { path: 'account', component: OpportunitiesViewComponent }
 ];
 
 @NgModule({
