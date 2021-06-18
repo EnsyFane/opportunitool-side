@@ -8,20 +8,20 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
     {
         public IEnumerable<Opportunity> UpdatedOpportunities { get; }
 
-        public IEnumerable<KeyValuePair<OpportunityUpdate, string>> InvalidOpportunities { get; }
+        public IEnumerable<OpportunityUpdate> NotUpdatedOpportunities { get; }
 
-        public IEnumerable<KeyValuePair<OpportunityUpdate, string>> NotFoundOpportunities { get; }
+        public IEnumerable<OpportunityUpdate> NotFoundOpportunities { get; }
 
-        public UpdateOpportunitiesResult(IEnumerable<Opportunity> updatedOpportunities, IEnumerable<KeyValuePair<OpportunityUpdate, string>> invalidOpportunities, IEnumerable<KeyValuePair<OpportunityUpdate, string>> notFoundOpportunities)
+        public UpdateOpportunitiesResult(IEnumerable<Opportunity> updatedOpportunities, IEnumerable<OpportunityUpdate> notUpdatedOpportunities, IEnumerable<OpportunityUpdate> notFoundOpportunities)
         {
             UpdatedOpportunities = updatedOpportunities;
-            InvalidOpportunities = invalidOpportunities;
+            NotUpdatedOpportunities = notUpdatedOpportunities;
             NotFoundOpportunities = notFoundOpportunities;
         }
 
         public bool HasErrors()
         {
-            return InvalidOpportunities.Any()
+            return NotUpdatedOpportunities.Any()
                 || NotFoundOpportunities.Any();
         }
     }

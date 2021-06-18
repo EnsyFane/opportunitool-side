@@ -10,7 +10,7 @@ namespace OpportunitoolApi.Persistence.Repositories
     /// </summary>
     public class EFOpportunityRepository : IOpportunityRepository
     {
-        private OpportunitoolDbContext _dbContext;
+        private readonly OpportunitoolDbContext _dbContext;
 
         public EFOpportunityRepository(OpportunitoolDbContext dbContext)
         {
@@ -59,6 +59,11 @@ namespace OpportunitoolApi.Persistence.Repositories
             if (entity == null)
             {
                 throw new ArgumentNullException(nameof(entity));
+            }
+
+            if (GetById(entity.Id.Value) != entity)
+            {
+                throw new KeyNotFoundException(nameof(entity));
             }
 
             _dbContext.Opportunities.Update(entity);

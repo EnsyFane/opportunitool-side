@@ -11,17 +11,17 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
     {
         public IEnumerable<Opportunity> CreatedOpportunities { get; }
 
-        public IEnumerable<Opportunity> InvalidOpportunities { get; }
+        public IEnumerable<OpportunityCreate> NotCreatedOpportunities { get; }
 
-        public CreateOpportunitiesResult(IEnumerable<Opportunity> createdOpportunities, IEnumerable<Opportunity> invalidOpportunities)
+        public CreateOpportunitiesResult(IEnumerable<Opportunity> createdOpportunities, IEnumerable<OpportunityCreate> notCreatedOpportunities)
         {
             CreatedOpportunities = createdOpportunities;
-            InvalidOpportunities = invalidOpportunities;
+            NotCreatedOpportunities = notCreatedOpportunities;
         }
 
         public bool HasErrors()
         {
-            return InvalidOpportunities.Any();
+            return NotCreatedOpportunities.Any();
         }
     }
 }

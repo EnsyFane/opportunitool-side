@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OpportunitoolApi.AppServices.Opportunities;
 using OpportunitoolApi.Infrastructure.Mapper;
 using OpportunitoolApi.Persistence;
 using OpportunitoolApi.Persistence.Repositories;
@@ -28,6 +29,7 @@ namespace OpportunitoolApi
         {
             AddDbContext(services);
             AddRepositories(services);
+            AddFacades(services);
             ConfigureControllers(services);
             AddSwagger(services);
             AddUtilities(services);
@@ -55,6 +57,11 @@ namespace OpportunitoolApi
         private void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IOpportunityRepository, EFOpportunityRepository>();
+        }
+
+        private void AddFacades(IServiceCollection services)
+        {
+            services.AddScoped<IOpportunityFacade, OpportunityFacade>();
         }
 
         private void ConfigureControllers(IServiceCollection services)

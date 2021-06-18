@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using OpportunitoolApi.AppServices.Opportunities.Model;
+using OpportunitoolApi.Core.Models;
 using System.Collections.Generic;
 
 namespace OpportunitoolApi.Infrastructure.Mapper
@@ -21,6 +23,9 @@ namespace OpportunitoolApi.Infrastructure.Mapper
         {
             return new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<OpportunityCreate, Opportunity>()
+                    .ForMember(dest => dest.Id, opt => opt.Ignore());
+                cfg.CreateMap<OpportunityUpdate, Opportunity>();
             });
         }
 

@@ -34,13 +34,13 @@ namespace OpportunitoolApi.AppServices.Opportunities
         /// </summary>
         /// <param name="opportunityIds">Opportunity ids to delete.</param>
         /// <returns>Operation results.</returns>
-        DeleteOpportunitiesResult DeleteOpportunities(IEnumerable<string> opportunityIds);
+        DeleteOpportunitiesResult DeleteOpportunities(IEnumerable<long> opportunityIds);
 
         /// <summary>
         /// Gets multiple opportunities with the given ids.
         /// </summary>
         /// <param name="opportunityIds">Opportunities ids to get.</param>
         /// <returns>Found opportunities.</returns>
-        IEnumerable<Opportunity> GetOpportunitiesByIds(IEnumerable<string> opportunityIds);
+        IEnumerable<Opportunity> GetOpportunitiesByIds(IEnumerable<long> opportunityIds);
     }
 }
