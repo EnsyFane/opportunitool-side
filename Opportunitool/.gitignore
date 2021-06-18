@@ -1,0 +1,9 @@
+.vs/
+obj/
+bin/
+
+OpportunitoolApi.xml
+
+*.oppdb
+*.oppdb-shm
+*.oppdb-wal

@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OpportunitoolApi.Infrastructure.Mapper;
+using OpportunitoolApi.Persistence;
+using OpportunitoolApi.Persistence.Repositories;
 using System;
 using System.IO;
 using System.Reflection;
@@ -22,7 +26,54 @@ namespace OpportunitoolApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AddDbContext(services);
+            AddRepositories(services);
+            ConfigureControllers(services);
+            AddSwagger(services);
+            AddUtilities(services);
+        }
+
+        private void AddDbContext(IServiceCollection services)
+        {
+            services.AddDbContext<OpportunitoolDbContext>(opt =>
+            {
+                string path = Directory.GetCurrentDirectory();
+                string dbPath = Configuration.GetValue<string>("Db");
+                if (dbPath.Contains(":"))
+                {
+                    path = dbPath;
+                }
+                else
+                {
+                    path += "\\" + dbPath;
+                }
+                var connectionString = $"Data Source={path};";
+                opt.UseSqlite(connectionString);
+            });
+        }
+
+        private void AddRepositories(IServiceCollection services)
+        {
+            services.AddScoped<IOpportunityRepository, EFOpportunityRepository>();
+        }
+
+        private void ConfigureControllers(IServiceCollection services)
+        {
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("AllowOrigin", options =>
+                {
+                    options.AllowAnyOrigin();
+                    options.AllowAnyHeader();
+                    options.AllowAnyMethod();
+                });
+            });
+
             services.AddControllers();
+        }
+
+        private void AddSwagger(IServiceCollection services)
+        {
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OpportunitoolApi", Version = "v1" });
@@ -30,6 +81,11 @@ namespace OpportunitoolApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+        }
+
+        private void AddUtilities(IServiceCollection services)
+        {
+            services.AddSingleton<IMappingCoordinator, MappingCoordinator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,12 +98,9 @@ namespace OpportunitoolApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OpportunitoolApi v1"));
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
