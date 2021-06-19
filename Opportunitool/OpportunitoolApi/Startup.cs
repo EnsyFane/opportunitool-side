@@ -87,7 +87,7 @@ namespace OpportunitoolApi
                 {
                     Title = "Opportunitool Api",
                     Version = "v1",
-                    Description = "An API created in ASP.NET Core 5 for https://opportunitool.ro.",
+                    Description = $"An API created in ASP.NET Core 5 for { new Uri("https://opportunitool.ro.") }",
                     Contact = new OpenApiContact
                     {
                         Name = "Tataran Stefan-George",
