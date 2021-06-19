@@ -79,10 +79,18 @@ namespace OpportunitoolApi.AppServices.Opportunities
         /// <inheritdoc/>
         public IEnumerable<Opportunity> GetOpportunitiesByIds(IEnumerable<long> opportunityIds)
         {
+            var opportunities = new List<Opportunity>();
+
             foreach (var opportunityId in opportunityIds)
             {
-                yield return _opportunityRepository.GetById(opportunityId);
+                var opportunity = _opportunityRepository.GetById(opportunityId);
+                if (opportunity != null)
+                {
+                    opportunities.Add(opportunity);
+                }
             }
+
+            return opportunities;
         }
 
         /// <inheritdoc/>

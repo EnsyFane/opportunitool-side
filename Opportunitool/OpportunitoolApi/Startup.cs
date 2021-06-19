@@ -83,10 +83,22 @@ namespace OpportunitoolApi
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "OpportunitoolApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Opportunitool Api",
+                    Version = "v1",
+                    Description = "An API created in ASP.NET Core 5 for https://opportunitool.ro.",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Tataran Stefan-George",
+                        Email = string.Empty,
+                        Url = new Uri("https://ensyfane.github.io/")
+                    }
+                });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+                c.EnableAnnotations();
             });
         }
 
@@ -108,6 +120,7 @@ namespace OpportunitoolApi
             app.UseRouting();
             app.UseAuthorization();
             app.UseCors("AllowOrigin");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

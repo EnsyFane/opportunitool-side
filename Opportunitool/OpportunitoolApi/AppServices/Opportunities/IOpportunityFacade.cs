@@ -7,7 +7,7 @@ namespace OpportunitoolApi.AppServices.Opportunities
     /// <summary>
     /// Interface providing contracts for <see cref="Opportunity"/> related operations.
     /// </summary>
-    internal interface IOpportunityFacade
+    public interface IOpportunityFacade
     {
         /// <summary>
         /// Gets opportunities.
