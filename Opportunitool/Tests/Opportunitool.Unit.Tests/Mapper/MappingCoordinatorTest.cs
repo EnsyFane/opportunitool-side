@@ -1,4 +1,4 @@
-﻿using Opportunitool.Infrastructure.Mapper;
+﻿using OpportunitoolApi.Infrastructure.Mapper;
 using Xunit;
 
 namespace Opportunitool.Unit.Tests.Mapper

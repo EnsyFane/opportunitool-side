@@ -4,12 +4,12 @@ on:
   push:
     branches: [ main ]
     paths: 
-    - 'Opportunitool/Opportunitool/**'
+    - 'Opportunitool/OpportunitoolApi/**'
     - 'Opportunitool/Tests/**'
   pull_request:
     branches: [ main ]
     paths: 
-    - 'Opportunitool/Opportunitool/**'
+    - 'Opportunitool/OpportunitoolApi/**'
     - 'Opportunitool/Tests/**'
   schedule:
     - cron: '0 0 * * *'
