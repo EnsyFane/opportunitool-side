@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OpportunitoolApi.Controllers.Models
+namespace OpportunitoolApi.Controllers.Models.Opportunities
 {
     public class GetOpportunitiesByIdsResponse
     {

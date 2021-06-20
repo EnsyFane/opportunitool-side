@@ -102,22 +102,23 @@ namespace OpportunitoolApi.AppServices.Opportunities
 
             foreach (var opportunity in opportunities)
             {
-                var opportunityModel = _mapper.Map<OpportunityUpdate, Opportunity>(opportunity);
-                try
+                var existingOpportunity = _opportunityRepository.GetById(opportunity.Id);
+                if (existingOpportunity == null)
                 {
-                    var result = _opportunityRepository.Update(opportunityModel);
+                    notFound.Add(opportunity);
+                }
+                else
+                {
+                    _mapper.Map(opportunity, existingOpportunity);
+                    var result = _opportunityRepository.Update(existingOpportunity);
                     if (result)
                     {
-                        updated.Add(opportunityModel);
+                        updated.Add(existingOpportunity);
                     }
                     else
                     {
                         notUpdated.Add(opportunity);
                     }
-                }
-                catch (KeyNotFoundException)
-                {
-                    notFound.Add(opportunity);
                 }
             }
 

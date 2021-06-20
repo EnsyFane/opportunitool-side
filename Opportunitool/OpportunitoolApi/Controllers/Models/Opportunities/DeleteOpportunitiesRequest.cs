@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OpportunitoolApi.Controllers.Models
+namespace OpportunitoolApi.Controllers.Models.Opportunities
 {
     [SwaggerSchema(Required = new[] { nameof(OpportunityIds) })]
-    public class GetOpportunitiesByIdsRequest
+    public class DeleteOpportunitiesRequest
     {
         [Required]
         [SwaggerSchema(Nullable = false)]
