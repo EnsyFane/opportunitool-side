@@ -4,18 +4,18 @@ using OpportunitoolApi.Errors;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OpportunitoolApi.Controllers.Models
+namespace OpportunitoolApi.Controllers.Models.Opportunities
 {
-    public class CreateOpportunitiesResponse
+    public class UpdateOpportunitiesResponse
     {
         public IEnumerable<Opportunity> Opportunities { get; set; }
 
-        public IEnumerable<KeyValuePair<OpportunityCreate, Error>> Errors { get; set; }
+        public IEnumerable<KeyValuePair<OpportunityUpdate, Error>> Errors { get; set; }
 
-        public CreateOpportunitiesResponse()
+        public UpdateOpportunitiesResponse()
         {
             Opportunities = Enumerable.Empty<Opportunity>();
-            Errors = Enumerable.Empty<KeyValuePair<OpportunityCreate, Error>>();
+            Errors = Enumerable.Empty<KeyValuePair<OpportunityUpdate, Error>>();
         }
     }
 }

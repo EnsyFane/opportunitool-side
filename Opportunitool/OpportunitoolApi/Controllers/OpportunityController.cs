@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OpportunitoolApi.AppServices.Opportunities;
 using OpportunitoolApi.AppServices.Opportunities.Model;
-using OpportunitoolApi.Controllers.Models;
+using OpportunitoolApi.Controllers.Models.Opportunities;
 using OpportunitoolApi.Errors;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Collections.Generic;
@@ -133,6 +133,93 @@ namespace OpportunitoolApi.Controllers
                         ErrorMessage = "Unknown error."
                     }));
                 }
+                response.Errors = notCreated;
+
+                return PartialSuccess(response);
+            }
+
+            return Ok(response);
+        }
+
+        [HttpPut("update-opportunities")]
+        [SwaggerOperation(
+            Summary = "Updates multiple opportunities.",
+            OperationId = "update-opportunities",
+            Tags = new[] { "Opportunities" }
+        )]
+        [SwaggerResponse(200, "The updated opportunities.", typeof(UpdateOpportunitiesResponse))]
+        [SwaggerResponse(206, "The updated opportunities and a list of errors for the opportunities that weren't updated.", typeof(UpdateOpportunitiesResponse))]
+        [SwaggerResponse(400, "Bad Request")]
+        public ActionResult<UpdateOpportunitiesResponse> UpdateOpportunities([FromBody] UpdateOpportunitiesRequest request)
+        {
+            // TODO: Add request validation.
+            var result = _opportunityFacade.UpdateOpportunities(request.Opportunities);
+
+            var response = new UpdateOpportunitiesResponse
+            {
+                Opportunities = result.UpdatedOpportunities
+            };
+
+            if (result.NotUpdatedOpportunities.Any() || result.NotFoundOpportunities.Any())
+            {
+                var notUpdated = new List<KeyValuePair<OpportunityUpdate, Error>>();
+                foreach (var error in result.NotUpdatedOpportunities)
+                {
+                    // TODO: Display the actual error.
+                    notUpdated.Add(new KeyValuePair<OpportunityUpdate, Error>(error, new Error
+                    {
+                        ErrorCode = ErrorCodes.UnknownError,
+                        ErrorMessage = "Unknown error."
+                    }));
+                }
+
+                foreach (var notFound in result.NotFoundOpportunities)
+                {
+                    notUpdated.Add(new KeyValuePair<OpportunityUpdate, Error>(notFound, new Error
+                    {
+                        ErrorCode = ErrorCodes.OpportunityNotFoundError,
+                        ErrorMessage = "No opportunity with the given identifier was found."
+                    }));
+                }
+                response.Errors = notUpdated;
+
+                return PartialSuccess(response);
+            }
+
+            return Ok(response);
+        }
+
+        [HttpDelete("delete-opportunities")]
+        [SwaggerOperation(
+            Summary = "Deletes multiple opportunities.",
+            OperationId = "delete-opportunities",
+            Tags = new[] { "Opportunities" }
+        )]
+        [SwaggerResponse(200, "The deleted opportunities ids.", typeof(DeleteOpportunitiesResponse))]
+        [SwaggerResponse(206, "The deleted opportunities ids and a list of errors for the opportunities that weren't deleted.", typeof(DeleteOpportunitiesResponse))]
+        public ActionResult<DeleteOpportunitiesResponse> DeleteOpportunities([FromBody] DeleteOpportunitiesRequest request)
+        {
+            var result = _opportunityFacade.DeleteOpportunities(request.OpportunityIds);
+
+            var response = new DeleteOpportunitiesResponse
+            {
+                DeletedOpportunityIds = result.DeletedOpportunities
+            };
+
+            if (result.NotFoundOpportunities.Any())
+            {
+                var notUpdated = new List<KeyValuePair<long, Error>>();
+                foreach (var notFound in result.NotFoundOpportunities)
+                {
+                    notUpdated.Add(new KeyValuePair<long, Error>(notFound, new Error
+                    {
+                        ErrorCode = ErrorCodes.OpportunityNotFoundError,
+                        ErrorMessage = "No opportunity with the given identifier was found."
+                    }));
+                }
+                response.Errors = notUpdated;
+
+                return PartialSuccess(response);
             }
 
             return Ok(response);

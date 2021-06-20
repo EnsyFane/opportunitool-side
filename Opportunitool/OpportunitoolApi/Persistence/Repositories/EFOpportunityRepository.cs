@@ -61,11 +61,6 @@ namespace OpportunitoolApi.Persistence.Repositories
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            if (GetById(entity.Id.Value) != entity)
-            {
-                throw new KeyNotFoundException(nameof(entity));
-            }
-
             _dbContext.Opportunities.Update(entity);
             return _dbContext.SaveChanges() >= 0;
         }
