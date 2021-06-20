@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Opportunitool\Opportunitool.csproj" />
+    <ProjectReference Include="..\..\OpportunitoolApi\OpportunitoolApi.csproj" />
   </ItemGroup>
 
 </Project>
