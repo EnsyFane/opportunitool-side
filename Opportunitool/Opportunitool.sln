@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opportunitool", "Opportunitool\Opportunitool.csproj", "{24C50D9B-760C-44C8-9361-8F3563F7D5EE}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5FB50D79-66DE-44AE-B4AF-3F1129C31C68}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opportunitool.Unit.Tests", "Tests\Opportunitool.Unit.Tests\Opportunitool.Unit.Tests.csproj", "{71ED2EC8-2506-4F65-B899-A0006152E472}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpportunitoolClient", "OpportunitoolClient\OpportunitoolClient.csproj", "{4A6BE289-6FE2-4334-9B4C-DA6541DB7EB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpportunitoolApi", "OpportunitoolApi\OpportunitoolApi.csproj", "{EE1EE035-9891-414C-A848-35B031833BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpportunitoolApi", "OpportunitoolApi\OpportunitoolApi.csproj", "{EE1EE035-9891-414C-A848-35B031833BB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8DD45B4-78B2-46F0-AFA9-ED88B8B32E43}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,10 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{24C50D9B-760C-44C8-9361-8F3563F7D5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24C50D9B-760C-44C8-9361-8F3563F7D5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24C50D9B-760C-44C8-9361-8F3563F7D5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24C50D9B-760C-44C8-9361-8F3563F7D5EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71ED2EC8-2506-4F65-B899-A0006152E472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71ED2EC8-2506-4F65-B899-A0006152E472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71ED2EC8-2506-4F65-B899-A0006152E472}.Release|Any CPU.ActiveCfg = Release|Any CPU
