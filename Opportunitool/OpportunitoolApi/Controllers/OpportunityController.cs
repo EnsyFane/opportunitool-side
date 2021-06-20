@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OpportunitoolApi.AppServices.Opportunities;
 using OpportunitoolApi.AppServices.Opportunities.Model;
@@ -10,8 +11,8 @@ using System.Linq;
 
 namespace OpportunitoolApi.Controllers
 {
-    [Route("opportunitool/opportunities")]
     [ApiController]
+    [Route("opportunitool/opportunities")]
     public class OpportunityController : ControllerBase
     {
         private readonly IOpportunityFacade _opportunityFacade;
@@ -21,6 +22,7 @@ namespace OpportunitoolApi.Controllers
             _opportunityFacade = opportunityFacade;
         }
 
+        [AllowAnonymous]
         [HttpGet("{opportunityId}")]
         [SwaggerOperation(
             Summary = "Gets an opportunity by id.",
@@ -40,6 +42,7 @@ namespace OpportunitoolApi.Controllers
                 {
                     new Error
                     {
+                        External = false,
                         ErrorCode = ErrorCodes.OpportunityNotFoundError,
                         ErrorMessage = $"No opportunity with Id: {opportunityId} found."
                     }
@@ -53,6 +56,7 @@ namespace OpportunitoolApi.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
         [HttpGet("")]
         [SwaggerOperation(
             Summary = "Gets all opportunities.",
@@ -72,6 +76,7 @@ namespace OpportunitoolApi.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
         [HttpPost("get-opportunities-by-ids")]
         [SwaggerOperation(
             Summary = "Gets multiple opportunities by ids.",
@@ -102,6 +107,7 @@ namespace OpportunitoolApi.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpPost("create-opportunities")]
         [SwaggerOperation(
             Summary = "Creates multiple opportunities.",
@@ -127,11 +133,13 @@ namespace OpportunitoolApi.Controllers
                 foreach (var error in result.NotCreatedOpportunities)
                 {
                     // TODO: Display the actual error.
-                    notCreated.Add(new KeyValuePair<OpportunityCreate, Error>(error, new Error
-                    {
-                        ErrorCode = ErrorCodes.UnknownError,
-                        ErrorMessage = "Unknown error."
-                    }));
+                    notCreated.Add(new KeyValuePair<OpportunityCreate, Error>(error,
+                        new Error
+                        {
+                            External = false,
+                            ErrorCode = ErrorCodes.UnknownError,
+                            ErrorMessage = "Unknown error."
+                        }));
                 }
                 response.Errors = notCreated;
 
@@ -141,6 +149,7 @@ namespace OpportunitoolApi.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpPut("update-opportunities")]
         [SwaggerOperation(
             Summary = "Updates multiple opportunities.",
@@ -166,20 +175,24 @@ namespace OpportunitoolApi.Controllers
                 foreach (var error in result.NotUpdatedOpportunities)
                 {
                     // TODO: Display the actual error.
-                    notUpdated.Add(new KeyValuePair<OpportunityUpdate, Error>(error, new Error
-                    {
-                        ErrorCode = ErrorCodes.UnknownError,
-                        ErrorMessage = "Unknown error."
-                    }));
+                    notUpdated.Add(new KeyValuePair<OpportunityUpdate, Error>(error,
+                        new Error
+                        {
+                            External = false,
+                            ErrorCode = ErrorCodes.UnknownError,
+                            ErrorMessage = "Unknown error."
+                        }));
                 }
 
                 foreach (var notFound in result.NotFoundOpportunities)
                 {
-                    notUpdated.Add(new KeyValuePair<OpportunityUpdate, Error>(notFound, new Error
-                    {
-                        ErrorCode = ErrorCodes.OpportunityNotFoundError,
-                        ErrorMessage = "No opportunity with the given identifier was found."
-                    }));
+                    notUpdated.Add(new KeyValuePair<OpportunityUpdate, Error>(notFound,
+                        new Error
+                        {
+                            External = false,
+                            ErrorCode = ErrorCodes.OpportunityNotFoundError,
+                            ErrorMessage = "No opportunity with the given identifier was found."
+                        }));
                 }
                 response.Errors = notUpdated;
 
@@ -189,6 +202,7 @@ namespace OpportunitoolApi.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpDelete("delete-opportunities")]
         [SwaggerOperation(
             Summary = "Deletes multiple opportunities.",
@@ -211,11 +225,13 @@ namespace OpportunitoolApi.Controllers
                 var notUpdated = new List<KeyValuePair<long, Error>>();
                 foreach (var notFound in result.NotFoundOpportunities)
                 {
-                    notUpdated.Add(new KeyValuePair<long, Error>(notFound, new Error
-                    {
-                        ErrorCode = ErrorCodes.OpportunityNotFoundError,
-                        ErrorMessage = "No opportunity with the given identifier was found."
-                    }));
+                    notUpdated.Add(new KeyValuePair<long, Error>(notFound,
+                        new Error
+                        {
+                            External = false,
+                            ErrorCode = ErrorCodes.OpportunityNotFoundError,
+                            ErrorMessage = "No opportunity with the given identifier was found."
+                        }));
                 }
                 response.Errors = notUpdated;
 

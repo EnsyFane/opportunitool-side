@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OpportunitoolApi.Persistence;
 
 namespace OpportunitoolApi.Infrastructure.Migrations
 {
     [DbContext(typeof(OpportunitoolDbContext))]
-    partial class OpportunitoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210620110859_AddedIdentity")]
+    partial class AddedIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
