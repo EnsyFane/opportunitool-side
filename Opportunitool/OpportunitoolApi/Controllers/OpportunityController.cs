@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OpportunitoolApi.AppServices.Opportunities;
+using OpportunitoolApi.AppServices.Opportunities.Model;
 using OpportunitoolApi.Controllers.Models;
 using OpportunitoolApi.Errors;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OpportunitoolApi.Controllers
 {
     [Route("opportunitool/opportunities")]
     [ApiController]
-    public class OpportunityController : ControllerBase, IOpportunityController
+    public class OpportunityController : ControllerBase
     {
         private readonly IOpportunityFacade _opportunityFacade;
 
@@ -72,12 +74,13 @@ namespace OpportunitoolApi.Controllers
 
         [HttpPost("get-opportunities-by-ids")]
         [SwaggerOperation(
-            Summary = "Gets multplie opportunities by ids.",
+            Summary = "Gets multiple opportunities by ids.",
             OperationId = "get-opportunities-by-ids",
             Tags = new[] { "Opportunities" }
         )]
         [SwaggerResponse(200, "Opportunities for all of the given ids.", typeof(GetOpportunitiesByIdsResponse))]
         [SwaggerResponse(206, "Opportunities for some of the given ids.", typeof(GetOpportunitiesByIdsResponse))]
+        [SwaggerResponse(400, "Bad Request")]
         public ActionResult<GetOpportunitiesByIdsResponse> GetOpportunitiesByIds([FromBody] GetOpportunitiesByIdsRequest request)
         {
             var opportunities = _opportunityFacade.GetOpportunitiesByIds(request.OpportunityIds);
@@ -85,13 +88,51 @@ namespace OpportunitoolApi.Controllers
             var foundIds = opportunities.Select(opportunity => opportunity.Id.Value).ToList();
             var notFound = request.OpportunityIds.Where(id => !foundIds.Contains(id)).ToList();
 
-            var response = new GetOpportunitiesByIdsResponse();
-            response.Opportunities = opportunities;
+            var response = new GetOpportunitiesByIdsResponse
+            {
+                Opportunities = opportunities
+            };
 
             if (notFound.Any())
             {
                 response.NotFound = notFound;
                 return PartialSuccess(response);
+            }
+
+            return Ok(response);
+        }
+
+        [HttpPost("create-opportunities")]
+        [SwaggerOperation(
+            Summary = "Creates multiple opportunities.",
+            OperationId = "create-opportunities",
+            Tags = new[] { "Opportunities" }
+        )]
+        [SwaggerResponse(200, "The created opportunities.", typeof(CreateOpportunitiesResponse))]
+        [SwaggerResponse(206, "The created opportunities and a list of errors for the opportunities that weren't created.", typeof(CreateOpportunitiesResponse))]
+        [SwaggerResponse(400, "Bad Request")]
+        public ActionResult<CreateOpportunitiesResponse> CreateOppotunities([FromBody] CreateOpportunitiesRequest request)
+        {
+            // TODO: Add request validation.
+            var result = _opportunityFacade.CreateOpportunities(request.Opportunities);
+
+            var response = new CreateOpportunitiesResponse
+            {
+                Opportunities = result.CreatedOpportunities
+            };
+
+            if (result.NotCreatedOpportunities.Any())
+            {
+                var notCreated = new List<KeyValuePair<OpportunityCreate, Error>>();
+                foreach (var error in result.NotCreatedOpportunities)
+                {
+                    // TODO: Display the actual error.
+                    notCreated.Add(new KeyValuePair<OpportunityCreate, Error>(error, new Error
+                    {
+                        ErrorCode = ErrorCodes.UnknownError,
+                        ErrorMessage = "Unknown error."
+                    }));
+                }
             }
 
             return Ok(response);

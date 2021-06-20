@@ -6,5 +6,7 @@
     public static class ErrorCodes
     {
         public const long OpportunityNotFoundError = -1;
+
+        public const long UnknownError = -2;
     }
 }
