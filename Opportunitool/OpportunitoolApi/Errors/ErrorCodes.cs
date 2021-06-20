@@ -5,8 +5,8 @@
     /// </summary>
     public static class ErrorCodes
     {
-        public const long OpportunityNotFoundError = -1;
+        public const string UnknownError = "unknown";
 
-        public const long UnknownError = -2;
+        public const string OpportunityNotFoundError = "-1";
     }
 }

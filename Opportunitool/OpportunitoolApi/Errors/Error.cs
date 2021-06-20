@@ -5,7 +5,9 @@
     /// </summary>
     public class Error
     {
-        public long ErrorCode { get; set; }
+        public bool External { get; set; }
+
+        public string ErrorCode { get; set; }
 
         public string ErrorMessage { get; set; }
     }

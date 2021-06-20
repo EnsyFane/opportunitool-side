@@ -71,6 +71,7 @@ namespace OpportunitoolApi
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 8;
                 options.Password.RequiredUniqueChars = 2;
+                options.Password.RequireNonAlphanumeric = false;
 
                 // Lockout settings.
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
@@ -79,6 +80,9 @@ namespace OpportunitoolApi
 
                 // User settings.
                 options.User.RequireUniqueEmail = true;
+
+                // TODO: remove this once an email sender is implemented.
+                options.SignIn.RequireConfirmedAccount = false;
             });
 
             services.ConfigureApplicationCookie(options =>
