@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OpportunitoolApi.AppServices.Opportunities;
 using OpportunitoolApi.AppServices.Opportunities.Model;
@@ -10,8 +11,8 @@ using System.Linq;
 
 namespace OpportunitoolApi.Controllers
 {
-    [Route("opportunitool/opportunities")]
     [ApiController]
+    [Route("opportunitool/opportunities")]
     public class OpportunityController : ControllerBase
     {
         private readonly IOpportunityFacade _opportunityFacade;

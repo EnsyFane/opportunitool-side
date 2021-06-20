@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OpportunitoolApi.AppServices.Opportunities;
+using OpportunitoolApi.Infrastructure.Authentication;
 using OpportunitoolApi.Infrastructure.Mapper;
 using OpportunitoolApi.Persistence;
 using OpportunitoolApi.Persistence.Repositories;
@@ -28,6 +30,7 @@ namespace OpportunitoolApi
         public void ConfigureServices(IServiceCollection services)
         {
             AddDbContext(services);
+            AddAuthentication(services);
             AddRepositories(services);
             AddFacades(services);
             ConfigureControllers(services);
@@ -54,17 +57,52 @@ namespace OpportunitoolApi
             });
         }
 
-        private void AddRepositories(IServiceCollection services)
+        private static void AddAuthentication(IServiceCollection services)
+        {
+            services.AddIdentity<OpportunitoolUser, IdentityRole>()
+                .AddEntityFrameworkStores<OpportunitoolDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 2;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                options.User.RequireUniqueEmail = true;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+        }
+
+        private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IOpportunityRepository, EFOpportunityRepository>();
         }
 
-        private void AddFacades(IServiceCollection services)
+        private static void AddFacades(IServiceCollection services)
         {
             services.AddScoped<IOpportunityFacade, OpportunityFacade>();
         }
 
-        private void ConfigureControllers(IServiceCollection services)
+        private static void ConfigureControllers(IServiceCollection services)
         {
             services.AddCors(opt =>
             {
@@ -79,7 +117,7 @@ namespace OpportunitoolApi
             services.AddControllers();
         }
 
-        private void AddSwagger(IServiceCollection services)
+        private static void AddSwagger(IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
             {
@@ -102,7 +140,7 @@ namespace OpportunitoolApi
             });
         }
 
-        private void AddUtilities(IServiceCollection services)
+        private static void AddUtilities(IServiceCollection services)
         {
             services.AddSingleton<IMappingCoordinator, MappingCoordinator>();
         }
@@ -118,6 +156,7 @@ namespace OpportunitoolApi
             }
 
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors("AllowOrigin");
 
