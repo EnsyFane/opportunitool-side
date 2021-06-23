@@ -57,20 +57,22 @@ namespace OpportunitoolApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("")]
+        [HttpPost("query-opportunities")]
         [SwaggerOperation(
-            Summary = "Gets all opportunities.",
-            OperationId = "get-all-opportunities",
+            Summary = "Queries all opportunities.",
+            OperationId = "query-opportunities",
             Tags = new[] { "Opportunities" }
         )]
-        [SwaggerResponse(200, "All opportunities stored in the app.", typeof(GetOpportunitiesResponse))]
-        public ActionResult<GetOpportunitiesResponse> GetAllOpportunities()
+        [SwaggerResponse(200, "All opportunities stored in the app matching the given filter.", typeof(QueryOpportunitiesResponse))]
+        [SwaggerResponse(400, "Bad Request.")]
+        public ActionResult<QueryOpportunitiesResponse> GetAllOpportunities([FromBody] QueryOpportunitiesRequest request)
         {
-            var opportunities = _opportunityFacade.GetOpportunities();
+            var queryResult = _opportunityFacade.QueryOpportunities(request.OpportunityFilter);
 
-            var response = new GetOpportunitiesResponse
+            var response = new QueryOpportunitiesResponse
             {
-                Opportunities = opportunities
+                Opportunities = queryResult.Opportunities,
+                Error = queryResult.Error
             };
 
             return Ok(response);
