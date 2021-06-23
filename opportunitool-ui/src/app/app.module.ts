@@ -11,11 +11,11 @@ import { OppToolbarModule } from './components/toolbar/toolbar.module';
 import { HomeViewComponent } from './components/home-view/home-view.component';
 import { OpportunitiesViewComponent } from './components/opportunities-view/opportunities-view.component';
 import { OppScrollUpModule } from './components/scroll-up/scroll-up.module';
+import { OppHomeViewModule } from './components/home-view/home-view.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeViewComponent,
         OpportunitiesViewComponent
     ],
     imports: [
@@ -28,7 +28,8 @@ import { OppScrollUpModule } from './components/scroll-up/scroll-up.module';
         NgxSpinnerModule,
 
         OppToolbarModule,
-        OppScrollUpModule
+        OppScrollUpModule,
+        OppHomeViewModule
     ],
     exports: [],
     providers: [

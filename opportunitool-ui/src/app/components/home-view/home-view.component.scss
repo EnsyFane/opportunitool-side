@@ -1,3 +1,33 @@
-p {
-    height: 12000px;
+@import "../../../styles.scss";
+
+.search-card {
+    margin: 20% 10%;
+    background-color: mat-color($theme-primary, 500);
+}
+
+.search-card mat-card-header {
+    display: flex;
+    justify-content: center;
+}
+
+.search-card mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    padding: 0;
+    margin: -5%;
+    width: 50%;
+}
+
+.form-container {
+    background: white;
+    padding: 0.5em;
+}
+
+.mat-form-field {
+    min-width: 23ch;
 }

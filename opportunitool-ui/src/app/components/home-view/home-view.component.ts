@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 
 @Component({
     selector: 'opp-home-view',
@@ -6,8 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./home-view.component.scss']
 })
 export class HomeViewComponent {
+    searchOptions: string[] = [$localize`Competitions`, $localize`Conferences`, $localize`Camps`, $localize`Programs`, $localize`Trainings`, $localize`Others`];
 
-    constructor() {
-        // TODO: later
-    }
+    @ViewChild('searchButtons') searchButtons: MatButtonToggleGroup;
 }

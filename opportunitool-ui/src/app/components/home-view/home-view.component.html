@@ -1,1 +1,24 @@
-<p>home-view works!</p>
+<div>
+    <mat-card class="search-card" color="accent">
+        <mat-card-header>
+            <img class="logo" src="/assets/opportunitool-white-full-logo.png" alt="opportunitool">
+        </mat-card-header>
+        <mat-card-content>
+            <div class="button-container">
+                <mat-button-toggle-group #searchButtons [value]="searchOptions[0]">
+                    <mat-button-toggle *ngFor="let option of searchOptions" [value]="option" i18n>{{option}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div class="form-container">
+                <form class="example-form">
+                    <!-- TODO: Add fields here -->
+                    <mat-form-field>
+                        <mat-label>Favorite food</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
