@@ -2,7 +2,12 @@
 using OpportunitoolApi.Core.Models;
 using OpportunitoolApi.Infrastructure.Mapper;
 using OpportunitoolApi.Persistence.Repositories;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Linq.Dynamic.Core.Exceptions;
+using System.Linq.Expressions;
 
 namespace OpportunitoolApi.AppServices.Opportunities
 {
@@ -91,6 +96,35 @@ namespace OpportunitoolApi.AppServices.Opportunities
             }
 
             return opportunities;
+        }
+
+        /// <inheritdoc/>
+        public QueryOpportunitiesResult QueryOpportunities(string filter)
+        {
+            var opportunities = GetOpportunities();
+            var result = new QueryOpportunitiesResult();
+            if (filter == null || string.IsNullOrEmpty(filter))
+            {
+                result.Opportunities = opportunities;
+                return result;
+            }
+
+            var parameter = Expression.Parameter(typeof(Opportunity), "Opportunity");
+            try
+            {
+                var expression = DynamicExpressionParser.ParseLambda(new[] { parameter }, null, filter).Compile();
+                result.Opportunities = opportunities.Where(opportunity => (bool)expression.DynamicInvoke(opportunity));
+            }
+            catch (InvalidOperationException ex)
+            {
+                result.Error = ex.Message;
+            }
+            catch (ParseException ex)
+            {
+                result.Error = ex.Message;
+            }
+
+            return result;
         }
 
         /// <inheritdoc/>

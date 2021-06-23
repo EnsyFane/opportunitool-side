@@ -42,5 +42,12 @@ namespace OpportunitoolApi.AppServices.Opportunities
         /// <param name="opportunityIds">Opportunities ids to get.</param>
         /// <returns>Found opportunities.</returns>
         IEnumerable<Opportunity> GetOpportunitiesByIds(IEnumerable<long> opportunityIds);
+
+        /// <summary>
+        /// Queries for opportunities matching the given <paramref name="filter"/>.
+        /// </summary>
+        /// <param name="filter">The filter to be applied.</param>
+        /// <returns>Opportunities matching the given filter.</returns>
+        QueryOpportunitiesResult QueryOpportunities(string filter);
     }
 }
