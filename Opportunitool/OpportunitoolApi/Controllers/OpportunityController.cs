@@ -243,6 +243,21 @@ namespace OpportunitoolApi.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
+        [HttpGet("locations")]
+        [SwaggerOperation(
+            Summary = "Gets all opportunity locations.",
+            OperationId = "get-locations",
+            Tags = new[] { "Opportunities" }
+        )]
+        [SwaggerResponse(200, "All the locations stored in the app.", typeof(IEnumerable<string>))]
+        public ActionResult<IEnumerable<string>> GetAllLocations()
+        {
+            var locations = _opportunityFacade.GetAllLocations();
+
+            return Ok(locations);
+        }
+
         private ActionResult<T> PartialSuccess<T>(T content)
         {
             var response = Ok(content);
