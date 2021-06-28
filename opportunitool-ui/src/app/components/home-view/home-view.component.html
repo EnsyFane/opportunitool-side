@@ -12,10 +12,21 @@
             </div>
             <div class="form-container">
                 <form class="example-form">
-                    <!-- TODO: Add fields here -->
-                    <mat-form-field>
-                        <mat-label>Favorite food</mat-label>
+                    <mat-form-field class="search-input">
+                        <mat-label i18n>Search for an opportunity</mat-label>
                         <input matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label i18n>Domain</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let domain of domains" [value]="domain">{{domain}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label i18n>Location</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let location of locations" [value]="location">{{location}}</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </form>
             </div>

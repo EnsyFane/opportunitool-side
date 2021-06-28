@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 
 .search-card {
-    margin: 20% 10%;
+    margin: 10% 15%;
     background-color: mat-color($theme-primary, 500);
 }
 
@@ -15,19 +15,25 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 1em;
 }
 
 .logo {
     padding: 0;
-    margin: -5%;
+    margin: -7% -5%;
     width: 50%;
 }
 
 .form-container {
+    margin-top: -1px;
     background: white;
-    padding: 0.5em;
+    padding: 0.5em 1em;
+}
+
+.search-input {
+    min-width: 33ch;
 }
 
 .mat-form-field {
-    min-width: 23ch;
+    margin: 0 10px;
 }
