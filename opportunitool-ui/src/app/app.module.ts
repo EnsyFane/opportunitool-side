@@ -40,7 +40,7 @@ import { OpportunityService } from './services/opportunity-service/opportunity.s
         },
         {
             provide: 'BASE_API_URL',
-            useValue: "https://localhost:5001/opportunitool"
+            useValue: 'https://localhost:5001/opportunitool'
         },
         OpportunityService
     ],
