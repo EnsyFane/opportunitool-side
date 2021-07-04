@@ -10,7 +10,15 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
 
         public string Description { get; set; }
 
-        public string Location { get; set; }
+        public string Country { get; set; }
+
+        public string County { get; set; }
+
+        public string City { get; set; }
+
+        public string Address { get; set; }
+
+        public bool IsOnline { get; set; }
 
         public DateTime? RegistrationDeadline { get; set; }
 
@@ -36,7 +44,11 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
             return Id == other.Id &&
                    Name == other.Name &&
                    Description == other.Description &&
-                   Location == other.Location &&
+                   Country == other.Country &&
+                   County == other.County &&
+                   City == other.City &&
+                   Address == other.Address &&
+                   IsOnline == other.IsOnline &&
                    RegistrationDeadline == other.RegistrationDeadline &&
                    RegistrationLink == other.RegistrationLink &&
                    OrganizerName == other.OrganizerName &&
@@ -64,7 +76,11 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
             hash.Add(Id);
             hash.Add(Name);
             hash.Add(Description);
-            hash.Add(Location);
+            hash.Add(Country);
+            hash.Add(County);
+            hash.Add(City);
+            hash.Add(Address);
+            hash.Add(IsOnline);
             hash.Add(RegistrationDeadline);
             hash.Add(RegistrationLink);
             hash.Add(OrganizerName);

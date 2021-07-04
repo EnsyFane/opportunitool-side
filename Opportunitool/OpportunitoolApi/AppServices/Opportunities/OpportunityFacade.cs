@@ -76,9 +76,9 @@ namespace OpportunitoolApi.AppServices.Opportunities
         }
 
         /// <inheritdoc/>
-        public IEnumerable<string> GetAllLocations()
+        public IEnumerable<string> GetAllCities()
         {
-            return GetOpportunities().Select(opportunity => opportunity.Location).Distinct();
+            return GetOpportunities().Select(opportunity => opportunity.City).Distinct();
         }
 
         /// <inheritdoc/>

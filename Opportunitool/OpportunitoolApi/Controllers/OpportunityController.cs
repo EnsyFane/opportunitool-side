@@ -246,14 +246,14 @@ namespace OpportunitoolApi.Controllers
         [AllowAnonymous]
         [HttpGet("locations")]
         [SwaggerOperation(
-            Summary = "Gets all opportunity locations.",
+            Summary = "Gets all opportunity cities.",
             OperationId = "get-locations",
             Tags = new[] { "Opportunities" }
         )]
         [SwaggerResponse(200, "All the locations stored in the app.", typeof(IEnumerable<string>))]
-        public ActionResult<IEnumerable<string>> GetAllLocations()
+        public ActionResult<IEnumerable<string>> GetAllOpportunityCities()
         {
-            var locations = _opportunityFacade.GetAllLocations();
+            var locations = _opportunityFacade.GetAllCities();
 
             return Ok(locations);
         }
