@@ -1,1 +1,36 @@
-<p>home-view works!</p>
+<div>
+    <mat-card class="search-card" color="accent">
+        <mat-card-header>
+            <img class="logo" src="/assets/opportunitool-white-full-logo.png" alt="opportunitool">
+        </mat-card-header>
+        <mat-card-content>
+            <div class="button-container">
+                <mat-button-toggle-group #searchButtons [value]="searchOptions[0]">
+                    <mat-button-toggle *ngFor="let option of searchOptions" [value]="option" i18n>{{option}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div class="form-container">
+                <form class="example-form">
+                    <mat-form-field class="search-input">
+                        <mat-label i18n>Search for an opportunity</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label i18n>Domain</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let domain of domains" [value]="domain">{{domain}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label i18n>Location</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let location of locations" [value]="location">{{location}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button [color]="'primary'" i18n>Search</button>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -6,16 +6,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
 import { OppToolbarModule } from './components/toolbar/toolbar.module';
-import { HomeViewComponent } from './components/home-view/home-view.component';
 import { OpportunitiesViewComponent } from './components/opportunities-view/opportunities-view.component';
 import { OppScrollUpModule } from './components/scroll-up/scroll-up.module';
+import { OppHomeViewModule } from './components/home-view/home-view.module';
+import { OpportunityService } from './services/opportunity-service/opportunity.service';
+
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeViewComponent,
         OpportunitiesViewComponent
     ],
     imports: [
@@ -28,14 +29,16 @@ import { OppScrollUpModule } from './components/scroll-up/scroll-up.module';
         NgxSpinnerModule,
 
         OppToolbarModule,
-        OppScrollUpModule
+        OppScrollUpModule,
+        OppHomeViewModule
     ],
     exports: [],
     providers: [
         {
             provide: LOCALE_ID,
             useValue: navigator.language
-        }
+        },
+        OpportunityService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]

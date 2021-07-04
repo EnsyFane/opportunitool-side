@@ -49,5 +49,11 @@ namespace OpportunitoolApi.AppServices.Opportunities
         /// <param name="filter">The filter to be applied.</param>
         /// <returns>Opportunities matching the given filter.</returns>
         QueryOpportunitiesResult QueryOpportunities(string filter);
+
+        /// <summary>
+        /// Gets all the locations for opportunities.
+        /// </summary>
+        /// <returns>Locations stored in the application.</returns>
+        IEnumerable<string> GetAllLocations();
     }
 }

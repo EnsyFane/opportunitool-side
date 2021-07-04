@@ -76,6 +76,12 @@ namespace OpportunitoolApi.AppServices.Opportunities
         }
 
         /// <inheritdoc/>
+        public IEnumerable<string> GetAllLocations()
+        {
+            return GetOpportunities().Select(opportunity => opportunity.Location).Distinct();
+        }
+
+        /// <inheritdoc/>
         public IEnumerable<Opportunity> GetOpportunities()
         {
             return _opportunityRepository.GetAll();
