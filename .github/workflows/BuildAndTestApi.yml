@@ -6,11 +6,13 @@ on:
     paths: 
     - 'Opportunitool/OpportunitoolApi/**'
     - 'Opportunitool/Tests/**'
+    - '.github/workflows/BuildAndTestApi.yml'
   pull_request:
     branches: [ main ]
     paths: 
     - 'Opportunitool/OpportunitoolApi/**'
     - 'Opportunitool/Tests/**'
+    - '.github/workflows/BuildAndTestApi.yml'
   schedule:
     - cron: '0 0 * * *'
 
