@@ -35,10 +35,6 @@ $app-font: "Roboto", sans-serif;
     @include mat.all-component-colors($app-dark-theme);
 }
 
-.snackbar {
-    padding: 0 !important;
-}
-
 .mat-button {
     .mat-button-focus-overlay {
         background-color: transparent;
