@@ -51,9 +51,9 @@ namespace OpportunitoolApi.AppServices.Opportunities
         QueryOpportunitiesResult QueryOpportunities(string filter);
 
         /// <summary>
-        /// Gets all the locations for opportunities.
+        /// Gets all the cities in which opportunities appear.
         /// </summary>
-        /// <returns>Locations stored in the application.</returns>
-        IEnumerable<string> GetAllLocations();
+        /// <returns>Cities stored in the database.</returns>
+        IEnumerable<string> GetAllCities();
     }
 }

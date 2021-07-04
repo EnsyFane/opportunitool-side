@@ -14,8 +14,24 @@ namespace OpportunitoolApi.Core.Models
         [Required]
         public string Description { get; set; }
 
+        public string Country { get; set; }
+
+        public string County { get; set; }
+
+        public string City { get; set; }
+
+        public string Adress { get; set; }
+
         [Required]
-        public string Location { get; set; }
+        public bool IsOnline { get; set; }
+
+        public string Location
+        {
+            get
+            {
+                return IsOnline ? "Online" : $"{Country}, {County}, {City}, {Adress}";
+            }
+        }
 
         /// <summary>
         /// The registration deadline.
@@ -65,7 +81,7 @@ namespace OpportunitoolApi.Core.Models
             return Id == other.Id &&
                    Name == other.Name &&
                    Description == other.Description &&
-                   Location == other.Location &&
+                   City == other.City &&
                    RegistrationDeadline == other.RegistrationDeadline &&
                    RegistrationLink == other.RegistrationLink &&
                    OrganizerName == other.OrganizerName &&
@@ -89,11 +105,11 @@ namespace OpportunitoolApi.Core.Models
 
         public override int GetHashCode()
         {
-            HashCode hash = new HashCode();
+            var hash = new HashCode();
             hash.Add(Id);
             hash.Add(Name);
             hash.Add(Description);
-            hash.Add(Location);
+            hash.Add(City);
             hash.Add(RegistrationDeadline);
             hash.Add(RegistrationLink);
             hash.Add(OrganizerName);

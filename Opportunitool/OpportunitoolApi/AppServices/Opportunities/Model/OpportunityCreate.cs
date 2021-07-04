@@ -8,7 +8,13 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
 
         public string Description { get; set; }
 
-        public string Location { get; set; }
+        public string Country { get; set; }
+
+        public string County { get; set; }
+
+        public string City { get; set; }
+
+        public string Adress { get; set; }
 
         public DateTime? RegistrationDeadline { get; set; }
 
@@ -33,7 +39,10 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
 
             return Name == other.Name &&
                    Description == other.Description &&
-                   Location == other.Location &&
+                   Country == other.Country &&
+                   County == other.County &&
+                   City == other.City &&
+                   Adress == other.Adress &&
                    RegistrationDeadline == other.RegistrationDeadline &&
                    RegistrationLink == other.RegistrationLink &&
                    OrganizerName == other.OrganizerName &&
@@ -57,7 +66,19 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name, Description, Location, RegistrationDeadline, RegistrationLink, OrganizerName, OrganizerPhone, OrganizerEmail);
+            HashCode hash = new HashCode();
+            hash.Add(Name);
+            hash.Add(Description);
+            hash.Add(Country);
+            hash.Add(County);
+            hash.Add(City);
+            hash.Add(Adress);
+            hash.Add(RegistrationDeadline);
+            hash.Add(RegistrationLink);
+            hash.Add(OrganizerName);
+            hash.Add(OrganizerPhone);
+            hash.Add(OrganizerEmail);
+            return hash.ToHashCode();
         }
 
         public static bool operator ==(OpportunityCreate left, OpportunityCreate right)
