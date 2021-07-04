@@ -18,6 +18,8 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
 
         public string Adress { get; set; }
 
+        public bool IsOnline { get; set; }
+
         public DateTime? RegistrationDeadline { get; set; }
 
         public string RegistrationLink { get; set; }
@@ -46,6 +48,7 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
                    County == other.County &&
                    City == other.City &&
                    Adress == other.Adress &&
+                   IsOnline == other.IsOnline &&
                    RegistrationDeadline == other.RegistrationDeadline &&
                    RegistrationLink == other.RegistrationLink &&
                    OrganizerName == other.OrganizerName &&
@@ -77,6 +80,7 @@ namespace OpportunitoolApi.AppServices.Opportunities.Model
             hash.Add(County);
             hash.Add(City);
             hash.Add(Adress);
+            hash.Add(IsOnline);
             hash.Add(RegistrationDeadline);
             hash.Add(RegistrationLink);
             hash.Add(OrganizerName);
