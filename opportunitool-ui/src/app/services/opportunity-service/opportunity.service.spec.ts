@@ -4,10 +4,11 @@ import { OpportunityService } from './opportunity.service';
 
 describe('OpportunityService', () => {
     let service: OpportunityService;
+    let mockHttp;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({});
-        service = TestBed.inject(OpportunityService);
+        mockHttp = jasmine.createSpyObj('http', ['get', 'post']);
+        service = new OpportunityService(mockHttp);
     });
 
     it('should be created', () => {
