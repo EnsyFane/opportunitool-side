@@ -12,6 +12,8 @@ import { OpportunitiesViewComponent } from './components/opportunities-view/oppo
 import { OppScrollUpModule } from './components/scroll-up/scroll-up.module';
 import { OppHomeViewModule } from './components/home-view/home-view.module';
 import { OpportunityService } from './services/opportunity-service/opportunity.service';
+import { OppErrorInfoModule } from './components/error-info/error-info.module';
+import { SnackbarService } from './services/snackbar-service/snackbar.service';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { OpportunityService } from './services/opportunity-service/opportunity.s
 
         OppToolbarModule,
         OppScrollUpModule,
-        OppHomeViewModule
+        OppHomeViewModule,
+        OppErrorInfoModule
     ],
     exports: [],
     providers: [
@@ -38,7 +41,8 @@ import { OpportunityService } from './services/opportunity-service/opportunity.s
             provide: LOCALE_ID,
             useValue: navigator.language
         },
-        OpportunityService
+        OpportunityService,
+        SnackbarService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]
