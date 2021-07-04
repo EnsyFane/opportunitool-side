@@ -20,7 +20,7 @@ namespace OpportunitoolApi.Core.Models
 
         public string City { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         [Required]
         public bool IsOnline { get; set; }
@@ -29,7 +29,7 @@ namespace OpportunitoolApi.Core.Models
         {
             get
             {
-                return IsOnline ? "Online" : $"{Country}, {County}, {City}, {Adress}";
+                return IsOnline ? "Online" : $"{Country}, {County}, {City}, {Address}";
             }
         }
 

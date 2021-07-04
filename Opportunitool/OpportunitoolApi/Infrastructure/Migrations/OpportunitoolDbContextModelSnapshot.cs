@@ -150,7 +150,7 @@ namespace OpportunitoolApi.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Adress")
+                    b.Property<string>("Address")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("City")

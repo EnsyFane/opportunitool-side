@@ -11,7 +11,7 @@ namespace OpportunitoolApi.Infrastructure.Migrations
                 table: "Opportunities");
 
             migrationBuilder.AddColumn<string>(
-                name: "Adress",
+                name: "Address",
                 table: "Opportunities",
                 type: "TEXT",
                 nullable: true);
@@ -45,7 +45,7 @@ namespace OpportunitoolApi.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Adress",
+                name: "Address",
                 table: "Opportunities");
 
             migrationBuilder.DropColumn(

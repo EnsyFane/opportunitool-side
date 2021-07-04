@@ -9,7 +9,7 @@ using OpportunitoolApi.Persistence;
 namespace OpportunitoolApi.Infrastructure.Migrations
 {
     [DbContext(typeof(OpportunitoolDbContext))]
-    [Migration("20210704203842_ExpandOpportunityLocation")]
+    [Migration("20210704210719_ExpandOpportunityLocation")]
     partial class ExpandOpportunityLocation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,7 +152,7 @@ namespace OpportunitoolApi.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Adress")
+                    b.Property<string>("Address")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("City")
