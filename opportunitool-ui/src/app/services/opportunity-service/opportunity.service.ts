@@ -13,7 +13,7 @@ export class OpportunityService {
         private snackbarService: SnackbarService
     ) { }
 
-    getAllLocations(): Observable<any> {
+    getAllLocations(): Observable<string[]> {
         return this.http.get(`opportunitool/opportunities/locations`)
             .pipe(
                 catchError((error: any) => {
