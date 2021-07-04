@@ -38,10 +38,6 @@ import { OpportunityService } from './services/opportunity-service/opportunity.s
             provide: LOCALE_ID,
             useValue: navigator.language
         },
-        {
-            provide: 'BASE_API_URL',
-            useValue: 'https://localhost:5001/opportunitool'
-        },
         OpportunityService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
