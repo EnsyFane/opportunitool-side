@@ -11,8 +11,6 @@ on:
     paths: 
     - 'Opportunitool/OpportunitoolApi/**'
     - 'Opportunitool/Tests/**'
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
   build:
