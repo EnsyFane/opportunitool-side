@@ -11,8 +11,6 @@ on:
     paths:
     - 'opportunitool-ui/**'
     - '.github/workflows/buildAndTestAngular.yml'
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
   build:
